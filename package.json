@@ -1,0 +1,18 @@
+{
+  "name": "elitefarmestates-landingpage",
+  "version": "1.0.0",
+  "description": "Elite 18 Farm Estates Landing Page - Moinabad",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "real-estate",
+    "landing-page",
+    "elite18",
+    "farm-estates"
+  ],
+  "author": "",
+  "license": "ISC"
+}

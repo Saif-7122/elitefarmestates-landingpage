@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elite 18 · Moinabad</title>
+<meta name="description" content="Only 19 villas in Moinabad, 30 mins from Kokapet. Your own villa with a private clubhouse. Talk to Arjun directly.">
+<meta property="og:title" content="Elite 18 · It's just you, and 18 families like you">
+<meta property="og:description" content="Only 19 villas in Moinabad, 30 mins from Kokapet.">
+<meta property="og:image" content="img/hero.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-sm.jpg" media="(max-width: 767px)">
+<link rel="preload" as="image" href="img/hero.jpg" media="(min-width: 768px)">
+<script>document.documentElement.classList.add("js");</script>
+<style>
+  :root {
+    --ink: #1c211d;
+    --body: #7b807c;
+    --line: #ececec;
+    --soft: #f7f7f5;
+    --white: #ffffff;
+    --green: #1f3527;
+    --green-hover: #2b4735;
+    --accent: #7c9a63;
+    --r-lg: 16px;
+    --r-md: 12px;
+    --pad: 20px;            /* text inside photo cards and panels */
+    --ease: cubic-bezier(.16, 1, .3, 1);
+    --font: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--white); color: var(--body); font: 500 16px/1.55 var(--font); letter-spacing: -0.02em; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { color: var(--ink); font-weight: 500; margin: 0; letter-spacing: -0.035em; }
+  h1 { font-size: clamp(2.3rem, 5.4vw, 4.2rem); line-height: 1.06; }
+  h2 { font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.12; }
+  h3 { font-size: 1.35rem; line-height: 1.25; letter-spacing: -0.025em; }
+  p { margin: 0; }
+
+  /* One column for everything: same left and right edge on every block. */
+  .wrap { width: min(1240px, 100% - 32px); margin-inline: auto; }
+  section { padding: 88px 0; }
+  .head { display: grid; gap: 14px; margin-bottom: 40px; }
+  .head.center { justify-items: center; text-align: center; max-width: 680px; margin-inline: auto; }
+  .head p { font-size: 1.05rem; max-width: 46ch; }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 300px; font: 500 1rem var(--font); letter-spacing: -0.02em; border: 0; cursor: pointer; white-space: nowrap; transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease); }
+  .btn .arrow { width: 18px; height: 18px; transition: transform .45s var(--ease); }
+  .btn:hover .arrow { transform: translateX(4px); }
+  .btn:active { transform: scale(.97); }
+  .btn-dark { background: var(--green); color: #fff; }
+  .btn-dark:hover { background: var(--green-hover); }
+  .btn-white { background: #fff; color: var(--ink); }
+  .btn-white:hover { background: #f1f1ee; }
+  .btn-glass { background: rgba(255,255,255,.16); color: #fff; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+  .btn-glass:hover { background: rgba(255,255,255,.26); }
+  .btn-line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px #d9d9d6; }
+  .btn-line:hover { background: var(--soft); }
+  .btn svg.wa { width: 19px; height: 19px; }
+  .btn-block { width: 100%; }
+
+  /* Header */
+  .header { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); transition: box-shadow .4s var(--ease); }
+  .header.scrolled { box-shadow: 0 1px 0 var(--line); }
+  .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo { display: block; }
+  .logo img { height: 46px; width: auto; }
+  .nav { display: none; gap: 32px; }
+  .nav a { color: var(--ink); position: relative; }
+  .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease); }
+  .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .header .btn { min-height: 42px; padding: 0 20px; font-size: .95rem; }
+
+  /* Hero: photo behind, words on the left, form on the right (stacked on phones). */
+  .hero { padding: 8px 0 0; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; }
+  .hero-bg { grid-area: 1 / 1 / 2 / 2; position: relative; border-radius: var(--r-lg); overflow: hidden; background: #18221b; }
+  .hero-bg picture { position: absolute; inset: -6% 0 0; will-change: transform; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.12); transition: transform 2.2s var(--ease); }
+  .loaded .hero-bg img { transform: scale(1); }
+  .hero-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,12,0) 30%, rgba(10,16,12,.75) 100%); }
+  .hero-copy { grid-area: 1 / 1 / 2 / 2; position: relative; z-index: 2; min-height: 46svh; padding: var(--pad); display: grid; gap: 14px; align-content: end; }
+  .hero-copy h1 { color: #fff; max-width: 12ch; }
+  .hero-copy p { color: rgba(255,255,255,.88); font-size: 1.08rem; max-width: 34ch; }
+
+  .lead-card { grid-area: 2 / 1 / 3 / 2; position: relative; z-index: 3; background: #fff; border-radius: var(--r-lg); padding: 24px var(--pad); margin-top: 10px; box-shadow: 0 0 0 1px var(--line); scroll-margin-top: 88px; }
+  .lead-card h2 { font-size: 1.5rem; letter-spacing: -0.03em; }
+  .lead-card .sub { margin-top: 6px; font-size: .95rem; }
+  form { display: grid; gap: 12px; margin-top: 18px; }
+  .row2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .phone-field { display: grid; gap: 6px; }
+  .field-label { font-size: .86rem; color: var(--ink); }
+  .phone-row { display: grid; grid-template-columns: 116px 1fr; gap: 8px; }
+  .phone-row select { padding: 0 8px 0 12px; }
+  label { display: grid; gap: 6px; font-size: .86rem; color: var(--ink); }
+  input, select { font: 500 1rem var(--font); letter-spacing: -0.02em; color: var(--ink); background: var(--soft); border: 1.5px solid transparent; border-radius: var(--r-md); min-height: 50px; padding: 0 14px; width: 100%; transition: border-color .3s var(--ease), background .3s var(--ease); }
+  input:focus, select:focus { outline: none; border-color: var(--green); background: #fff; }
+  .choices { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .choices.c3 { grid-template-columns: repeat(3, 1fr); }
+  .choices.c2 { grid-template-columns: repeat(2, 1fr); }
+  .choices legend { font-size: .86rem; color: var(--ink); margin-bottom: 6px; padding: 0; }
+  .choices label { display: block; position: relative; }
+  .choices input { position: absolute; opacity: 0; width: 1px; height: 1px; min-height: 0; }
+  .choices span { display: flex; align-items: center; justify-content: center; gap: 6px; text-align: center; min-height: 48px; padding: 6px; border-radius: var(--r-md); box-shadow: inset 0 0 0 1px #dfdfdb; color: var(--ink); font-size: .9rem; line-height: 1.2; cursor: pointer; transition: background .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease); }
+  .choices span svg { width: 17px; height: 17px; flex: none; }
+  .choices input:checked + span { background: var(--green); color: #fff; box-shadow: none; }
+  .choices input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .form-note { font-size: .82rem; text-align: center; }
+  .error { color: #b4441f; font-size: .86rem; min-height: 1.2em; }
+  .thanks { display: none; gap: 12px; margin-top: 18px; }
+  .thanks.show { display: grid; }
+  .thanks:focus { outline: none; }
+
+  /* Facts row under the hero */
+  .facts { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .facts li { background: var(--soft); border-radius: var(--r-md); padding: 16px var(--pad); color: var(--ink); display: grid; gap: 2px; }
+  .facts b { font-weight: 500; font-size: 1.25rem; letter-spacing: -0.03em; }
+  .facts span { font-size: .86rem; color: var(--body); }
+
+  /* Image cards */
+  .card-img { position: relative; border-radius: var(--r-lg); overflow: hidden; background: #e9ece6; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .zoom:hover img { transform: scale(1.05); }
+  .chip { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); border-radius: 300px; padding: 8px 14px; font-size: .9rem; }
+  .chip svg { width: 16px; height: 16px; color: var(--accent); flex: none; }
+
+  /* Location */
+  .loc-card { min-height: 540px; display: grid; align-items: end; }
+  .loc-card > img { position: absolute; inset: 0; }
+  .loc-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,12,.05) 30%, rgba(10,16,12,.7) 100%); pointer-events: none; }
+  .loc-body { position: relative; z-index: 2; padding: var(--pad); display: grid; gap: 16px; }
+  .loc-body h3 { color: #fff; font-size: clamp(1.6rem, 3.2vw, 2.4rem); letter-spacing: -0.035em; }
+  .drives { display: flex; flex-wrap: wrap; gap: 8px; }
+  .drives .chip b { font-weight: 600; }
+  .loc-note { color: rgba(255,255,255,.75); font-size: .85rem; margin-top: 10px; }
+
+  /* Villa */
+  .villa-card { min-height: 600px; display: grid; align-content: space-between; }
+  .villa-card > img { position: absolute; inset: 0; }
+  .villa-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,16,12,.55) 0%, rgba(10,16,12,0) 40%); pointer-events: none; z-index: 1; }
+  .villa-top { position: relative; z-index: 2; padding: var(--pad); display: grid; gap: 6px; }
+  .villa-top h3 { color: #fff; font-size: 1.6rem; }
+  .villa-top p { color: rgba(255,255,255,.88); }
+  .spec { position: relative; z-index: 2; margin: var(--pad); margin-top: 0; background: #fff; border-radius: var(--r-md); display: grid; grid-template-columns: 1fr 1fr; }
+  .spec div { display: flex; align-items: center; gap: 10px; padding: 14px 16px; color: var(--ink); font-size: .95rem; line-height: 1.25; }
+  .spec svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
+  .plan-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
+
+  /* Only 19 */
+  .space-grid { display: grid; gap: 28px; align-items: center; }
+  .space-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .space-list li { display: flex; justify-content: space-between; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .space-list span { color: var(--body); }
+
+  /* Clubhouse panel */
+  .panel { background: var(--soft); border-radius: var(--r-lg); padding: 40px var(--pad); }
+  .club-grid { display: grid; gap: 28px; }
+  .club-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .club-media { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .club-media .card-img:first-child { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .club-media .card-img { aspect-ratio: 1; }
+
+  /* Slider: track padding equals the column gutter, so slide 1 lines up with the column. */
+  .slider-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 32px; }
+  .slider-nav { display: none; gap: 8px; flex: none; }
+  .round { width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--soft); color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .3s var(--ease), opacity .3s; }
+  .round:hover { background: #ecece8; }
+  .round:disabled { opacity: .35; cursor: default; }
+  .round svg { width: 20px; height: 20px; }
+  .track { --gutter: max(16px, (100% - 1240px) / 2); display: grid; grid-auto-flow: column; grid-auto-columns: 82%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); padding: 0 var(--gutter) 6px; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .track::-webkit-scrollbar { display: none; }
+  .slide { scroll-snap-align: start; display: grid; gap: 6px; align-content: start; }
+  .slide .card-img { aspect-ratio: 4 / 3.3; margin-bottom: 8px; }
+  .slide .card-img img { object-position: right center; }
+  .slide h3 { font-size: 1.2rem; }
+  .progress { height: 2px; background: var(--line); border-radius: 2px; margin-top: 28px; overflow: hidden; }
+  .progress i { display: block; height: 100%; width: 30%; background: var(--ink); border-radius: inherit; transition: transform .2s linear; }
+
+  /* Steps */
+  .steps-grid { display: grid; gap: 28px; align-items: center; }
+  .steps-grid .card-img { aspect-ratio: 4 / 3.4; }
+  .steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .steps li { display: grid; grid-template-columns: 48px 1fr; gap: 4px 16px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .steps .num { grid-row: span 2; width: 48px; height: 48px; border-radius: 50%; background: var(--soft); color: var(--ink); display: grid; place-items: center; font-size: .95rem; align-self: start; }
+  .steps h3 { font-size: 1.3rem; }
+
+  /* Closing call to action */
+  .cta-panel { background: var(--green); border-radius: var(--r-lg); overflow: hidden; display: grid; }
+  .cta-media { position: relative; min-height: 240px; }
+  .cta-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .cta-body { padding: 36px var(--pad) 40px; display: grid; gap: 14px; align-content: center; }
+  .cta-body h2 { color: #fff; }
+  .cta-body p { color: rgba(255,255,255,.78); font-size: 1.05rem; max-width: 40ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+
+  /* Footer */
+  footer { padding: 56px 0 120px; }
+  footer .wrap { display: grid; gap: 18px; border-top: 1px solid var(--line); padding-top: 40px; }
+  footer .logo img { height: 44px; }
+  footer p { font-size: .9rem; }
+  footer a { color: var(--ink); }
+
+  /* Sticky bar on phones */
+  .sticky { position: fixed; left: 16px; right: 16px; bottom: calc(10px + env(safe-area-inset-bottom)); z-index: 40; display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 6px; padding: 6px; background: rgba(255,255,255,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 300px; box-shadow: 0 10px 30px rgba(20,30,22,.18); transform: translateY(140%); transition: transform .6s var(--ease); }
+  .sticky.on { transform: none; }
+  .sticky .btn { min-height: 46px; padding: 0 8px; font-size: .92rem; }
+
+  dialog { border: 0; padding: 0; border-radius: var(--r-lg); max-width: min(960px, 94vw); background: #fff; }
+  dialog[open] { animation: pop .5s var(--ease); }
+  dialog::backdrop { background: rgba(12,18,14,.7); backdrop-filter: blur(4px); }
+  dialog img { max-height: 84vh; width: auto; margin: auto; }
+  dialog form { display: block; margin: 0; }
+  dialog .round { position: absolute; top: 10px; right: 10px; background: var(--ink); color: #fff; }
+  @keyframes pop { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+
+  /* Scroll reveal */
+  .js .reveal { opacity: 0; transform: translateY(32px); transition: opacity .85s var(--ease), transform .85s var(--ease); transition-delay: var(--d, 0s); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .reveal-img { clip-path: inset(6% 3% 6% 3% round var(--r-lg)); transition: clip-path 1.2s var(--ease); }
+  .js .reveal-img.in { clip-path: inset(0 0 0 0 round var(--r-lg)); }
+
+  @media (min-width: 768px) {
+    :root { --pad: 48px; }
+    section { padding: 120px 0; }
+    .nav { display: flex; }
+    .logo img { height: 54px; }
+    .hero-grid { grid-template-columns: 1fr minmax(400px, 470px); min-height: min(calc(100vh - 96px), 820px); }
+    .hero-bg { grid-area: 1 / 1 / 2 / 3; }
+    .hero-copy { grid-area: 1 / 1 / 2 / 2; min-height: 0; }
+    .hero-copy h1 { max-width: 15ch; font-size: clamp(2.4rem, 4.4vw, 4rem); text-wrap: balance; }
+    .lead-card { grid-area: 1 / 2 / 2 / 3; align-self: center; margin: 32px var(--pad) 32px 0; padding: 32px; box-shadow: 0 24px 60px rgba(10,16,12,.25); }
+    .row2 { grid-template-columns: 1fr 1fr; }
+    .facts { grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 10px; background: var(--soft); border-radius: var(--r-md); }
+    .facts li { background: none; border-radius: 0; padding: 22px 28px; border-left: 1px solid #e6e6e2; }
+    .facts li:first-child { border-left: 0; }
+    .loc-card { min-height: 620px; }
+    .loc-body { grid-template-columns: 1fr auto; align-items: end; }
+    .villa-card { min-height: 680px; }
+    .spec { grid-template-columns: repeat(6, 1fr); }
+    .spec div { justify-content: center; padding: 18px 8px; border-left: 1px solid var(--line); }
+    .spec div:first-child { border-left: 0; }
+    .space-grid { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .panel { padding: 88px var(--pad); }
+    .club-grid { grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+    .slider-nav { display: flex; }
+    .track { grid-auto-columns: calc((min(1240px, 100vw - 32px) - 32px) / 3); gap: 16px; }
+    .steps-grid { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .cta-panel { grid-template-columns: 1fr 1fr; }
+    .cta-body { padding: 72px var(--pad); }
+    .sticky { display: none; }
+    footer { padding-bottom: 56px; }
+    footer .wrap { grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-bg { grid-area: 1 / 1 / 2 / 2; }
+    .hero-copy { min-height: 520px; }
+    .lead-card { grid-area: 2 / 1 / 3 / 2; margin: 10px 0 0; box-shadow: 0 0 0 1px var(--line); }
+    .spec { grid-template-columns: repeat(3, 1fr); }
+    .spec div:nth-child(4) { border-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .js .reveal, .js .reveal-img { opacity: 1; transform: none; clip-path: none; }
+    .hero-bg img { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Elite 18 home"><img src="img/logo.png" width="440" height="246" alt="elite eighteen"></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#location">Location</a>
+      <a href="#villa">Villa</a>
+      <a href="#clubhouse">Clubhouse</a>
+      <a href="#life">Life here</a>
+    </nav>
+    <a class="btn btn-dark js-to-form" href="#book">Talk to Arjun</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero with the form -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-bg">
+          <picture>
+            <source media="(max-width: 767px)" srcset="img/hero-sm.jpg">
+            <img src="img/hero.jpg" width="1400" height="1036" alt="An Elite 18 villa at dusk" fetchpriority="high" id="hero-img">
+          </picture>
+        </div>
+        <div class="hero-copy">
+          <h1 class="reveal" style="--d:.15s">It's just you, and 18 families like you.</h1>
+          <p class="reveal" style="--d:.3s">Your own villa in Moinabad. Just 30 mins from Kokapet.</p>
+        </div>
+
+        <div class="lead-card reveal" style="--d:.4s" id="book">
+          <h2>Talk to Arjun directly</h2>
+          <p class="sub">Leave your number. We'll call at your time and fix the meeting.</p>
+
+          <form id="lead-form" novalidate>
+            <label>Your name<input name="name" autocomplete="name" required></label>
+            <div class="phone-field">
+              <span class="field-label" id="phone-label">Mobile number</span>
+              <div class="phone-row">
+                <select name="country" id="country" aria-label="Country code" autocomplete="tel-country-code"></select>
+                <input name="phone" id="phone" type="tel" inputmode="numeric" autocomplete="tel-national" aria-labelledby="phone-label" placeholder="98765 43210" maxlength="14" required>
+              </div>
+            </div>
+            <div class="row2">
+              <label>City<input name="city" autocomplete="address-level2" required></label>
+              <label>Best time to call
+                <select name="best_time" required>
+                  <option value="">Pick a time</option>
+                  <option value="morning">Morning (9 to 12)</option>
+                  <option value="afternoon">Afternoon (12 to 4)</option>
+                  <option value="evening">Evening (4 to 8)</option>
+                  <option value="weekend">Weekend</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="choices c3">
+              <legend>Looking for</legend>
+              <label><input type="radio" name="looking_for" value="own_home" required><span>Own home</span></label>
+              <label><input type="radio" name="looking_for" value="weekend_home"><span>Weekend home</span></label>
+              <label><input type="radio" name="looking_for" value="for_parents"><span>For parents</span></label>
+            </fieldset>
+            <fieldset class="choices c2">
+              <legend>Meet Arjun on</legend>
+              <label><input type="radio" name="meeting_mode" value="google_meet" required><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>Google Meet</span></label>
+              <label><input type="radio" name="meeting_mode" value="in_person"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M15 19c0-2 1-3.5 3-3.5s3 1.5 3 3.5"/></svg>Face to face</span></label>
+            </fieldset>
+            <p class="error" id="form-error" role="alert"></p>
+            <button class="btn btn-dark btn-block" type="submit">Call me back <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <p class="form-note">We'll use your number only for Elite 18.</p>
+          </form>
+
+          <div class="thanks" id="thanks" tabindex="-1">
+            <h3>Thank you. We'll call you soon.</h3>
+            <p>Meanwhile, here's the brochure.</p>
+            <a class="btn btn-dark" href="brochure/Elite18_Brochure.pdf" download>Download brochure</a>
+            <a class="btn btn-line js-wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <ul class="facts reveal" style="--d:.5s">
+        <li><b>19</b><span>villas only</span></li>
+        <li><b>1,000+ sq yds</b><span>to your name</span></li>
+        <li><b>30 mins</b><span>from Kokapet</span></li>
+        <li><b>Private</b><span>clubhouse</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location">
+    <div class="wrap">
+      <div class="head center reveal">
+        <h2>Green all around. And the city is just 30 mins away.</h2>
+        <p>Clean air, big trees and quiet roads. Easy to drive down any weekend.</p>
+      </div>
+      <div class="card-img loc-card reveal-img zoom">
+        <img src="img/avenue-sm.jpg" srcset="img/avenue-sm.jpg 760w, img/avenue.jpg 1400w" sizes="(min-width: 1272px) 1240px, 100vw" width="760" height="418" loading="lazy" alt="Tree-lined road inside Elite 18">
+        <div class="loc-body">
+          <h3 class="reveal">Yelkaguda, Moinabad</h3>
+          <div>
+            <div class="drives reveal" style="--d:.15s">
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Moinabad <b>5 mins</b></span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Kokapet <b>30 mins</b></span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Airport <b>40 mins</b></span>
+            </div>
+            <p class="loc-note reveal" style="--d:.25s">Without traffic</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Villa -->
+  <section id="villa" style="padding-top:0">
+    <div class="wrap">
+      <div class="head center reveal">
+        <h2>Your own villa, on your own land</h2>
+        <p>About 3,000 sft. Built for big families and long weekends.</p>
+      </div>
+      <div class="card-img villa-card reveal-img zoom">
+        <img src="img/backyard-sm.jpg" srcset="img/backyard-sm.jpg 760w, img/backyard.jpg 1400w" sizes="(min-width: 1272px) 1240px, 100vw" width="760" height="760" loading="lazy" alt="Villa backyard with a lawn and a pergola">
+        <div class="villa-top">
+          <h3>The Elite 18 villa</h3>
+          <p>East facing 2,930 sft · West facing 3,097 sft</p>
+        </div>
+        <div class="spec reveal">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 14h18M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg>3 bedrooms</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Home theatre</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 18h16M6 18v-5a6 6 0 0 1 12 0v5M12 4v3"/></svg>Pooja room</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11h16v7H4zM7 11V8a5 5 0 0 1 10 0v3"/></svg>Family lounge</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18M5 20V10l7-5 7 5v10"/></svg>Open decks</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c-4-3-7-6-7-10a7 7 0 0 1 14 0c0 4-3 7-7 10Z"/><path d="M12 8v6"/></svg>Your own garden</div>
+        </div>
+      </div>
+      <div class="plan-row reveal">
+        <button class="btn btn-line" type="button" data-plan="img/plan-east.jpg" data-alt="East facing villa plan">East facing plan</button>
+        <button class="btn btn-line" type="button" data-plan="img/plan-west.jpg" data-alt="West facing villa plan">West facing plan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Only 19 -->
+  <section style="padding-top:0">
+    <div class="wrap space-grid">
+      <div class="reveal">
+        <div class="head" style="margin-bottom:28px">
+          <h2>Only 19 families. That's it.</h2>
+          <p>No crowd. You'll know every neighbour by name.</p>
+        </div>
+        <ul class="space-list">
+          <li>Total land <span>5.77 acres</span></li>
+          <li>Villas <span>19 only</span></li>
+          <li>Roads inside <span>30 ft wide</span></li>
+          <li>Open space <span>0.75 acres</span></li>
+        </ul>
+      </div>
+      <div class="card-img reveal-img" style="aspect-ratio:760/547">
+        <img src="img/layout-sm.jpg" srcset="img/layout-sm.jpg 760w, img/layout.jpg 1400w" sizes="(min-width: 768px) 50vw, 100vw" width="760" height="547" loading="lazy" alt="Elite 18 site layout with 19 plots">
+      </div>
+    </div>
+  </section>
+
+  <!-- Clubhouse -->
+  <div class="wrap" id="clubhouse">
+    <div class="panel">
+      <div class="club-grid">
+        <div class="reveal">
+          <div class="head" style="margin-bottom:24px">
+            <h2>A clubhouse only for the 19 families</h2>
+            <p>Host a function, swim with the kids, or just sit with a book. No queues, no strangers.</p>
+          </div>
+          <div class="club-list">
+            <span class="chip">Swimming pool</span><span class="chip">Kids pool</span><span class="chip">Banquet hall</span><span class="chip">Guest suites</span><span class="chip">Cafe</span><span class="chip">Library</span><span class="chip">Pickleball</span><span class="chip">Indoor games</span>
+          </div>
+        </div>
+        <div class="club-media">
+          <div class="card-img reveal-img zoom"><img src="img/clubhouse-sm.jpg" srcset="img/clubhouse-sm.jpg 760w, img/clubhouse.jpg 1400w" sizes="(min-width: 768px) 55vw, 100vw" width="760" height="411" loading="lazy" alt="The Elite 18 clubhouse"></div>
+          <div class="card-img reveal-img zoom"><img src="img/pool-evening-sm.jpg" width="760" height="760" loading="lazy" alt="Clubhouse pool in the evening"></div>
+          <div class="card-img reveal-img zoom"><img src="img/pickleball-sm.jpg" width="760" height="760" loading="lazy" alt="Pickleball court at dusk"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Life here slider -->
+  <section id="life">
+    <div class="wrap slider-head reveal">
+      <div class="head" style="margin:0">
+        <h2>Weekends, the way they should be</h2>
+        <p>Slow mornings, fresh air and evenings with family.</p>
+      </div>
+      <div class="slider-nav">
+        <button class="round" type="button" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="round" type="button" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="track reveal" id="track">
+      <article class="slide"><div class="card-img zoom"><img src="img/firepit-sm.jpg" width="760" height="760" loading="lazy" alt="Family at a fire pit"></div><h3>Evenings by the fire</h3><p>Nobody rushing home.</p></article>
+      <article class="slide"><div class="card-img zoom"><img src="img/fruit-sm.jpg" width="760" height="403" loading="lazy" alt="Fruit garden"></div><h3>Fruit garden</h3><p>Pick fruit from your own trees.</p></article>
+      <article class="slide"><div class="card-img zoom"><img src="img/kitchen-sm.jpg" width="760" height="403" loading="lazy" alt="Kitchen garden"></div><h3>Kitchen garden</h3><p>Grow your own vegetables.</p></article>
+      <article class="slide"><div class="card-img zoom"><img src="img/pool-sm.jpg" width="760" height="441" loading="lazy" alt="Swimming pool"></div><h3>The pool</h3><p>A swim before breakfast.</p></article>
+      <article class="slide"><div class="card-img zoom"><img src="img/pickleball-sm.jpg" width="760" height="760" loading="lazy" alt="Pickleball"></div><h3>Pickleball</h3><p>Game night with the neighbours.</p></article>
+      <article class="slide"><div class="card-img zoom"><img src="img/avenue-sm.jpg" width="760" height="418" loading="lazy" alt="Tree-lined road"></div><h3>Morning walks</h3><p>Under the trees, at your own pace.</p></article>
+    </div>
+    <div class="wrap"><div class="progress" aria-hidden="true"><i id="bar"></i></div></div>
+  </section>
+
+  <!-- Steps -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head center reveal">
+        <h2>How it works</h2>
+        <p>Three simple steps. No pressure at any point.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="card-img reveal-img"><img src="img/gate-sm.jpg" srcset="img/gate-sm.jpg 760w, img/gate.jpg 1400w" sizes="(min-width: 768px) 50vw, 100vw" width="760" height="365" loading="lazy" alt="Elite 18 entrance gate"></div>
+        <ol class="steps">
+          <li class="reveal"><span class="num">01</span><h3>Talk to Arjun</h3><p>On Google Meet or face to face. Ask him anything.</p></li>
+          <li class="reveal" style="--d:.1s"><span class="num">02</span><h3>See the land</h3><p>Come any weekend. Walk around, take your time.</p></li>
+          <li class="reveal" style="--d:.2s"><span class="num">03</span><h3>Pick your villa</h3><p>Choose the plot and facing you like.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing call to action -->
+  <div class="wrap" id="cta">
+    <div class="cta-panel">
+      <div class="cta-media"><img src="img/firepit-sm.jpg" srcset="img/firepit-sm.jpg 760w, img/firepit.jpg 1400w" sizes="(min-width: 768px) 620px, 100vw" width="760" height="760" loading="lazy" alt=""></div>
+      <div class="cta-body">
+        <h2 class="reveal">Ready to meet Arjun?</h2>
+        <p class="reveal" style="--d:.1s">Any question you have, he'll answer it face to face or on Google Meet.</p>
+        <div class="cta-actions reveal" style="--d:.2s">
+          <a class="btn btn-white js-to-form" href="#book">Book a meeting <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-glass js-wa" href="#" target="_blank" rel="noopener"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg> WhatsApp</a>
+          <a class="btn btn-glass js-tel" href="#">Call us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/logo.png" width="440" height="246" alt="elite eighteen" loading="lazy"></a>
+    <p>Yelkaguda, Moinabad, Hyderabad. Developed by E-Infra. Sales by House of Investors.<br>Images are artist's impressions.</p>
+    <p>Call <a class="js-tel" href="#">+91 70307 77707</a></p>
+  </div>
+</footer>
+
+<nav class="sticky" id="sticky" aria-label="Quick contact">
+  <a class="btn btn-line js-tel" href="#">Call</a>
+  <a class="btn btn-line js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-dark js-to-form" href="#book">Talk to Arjun</a>
+</nav>
+
+<dialog id="plan-dialog">
+  <form method="dialog"><button class="round" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></form>
+  <img id="plan-img" alt="">
+</dialog>
+
+<script>
+  // One place to change the company number (confirm with Nikhil before going live).
+  const PHONE = "917030777707";
+  const WA_TEXT = "Hi, I'd like to know more about Elite 18.";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll(".js-tel").forEach(a => a.href = "tel:+" + PHONE);
+  document.querySelectorAll(".js-wa").forEach(a => a.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(WA_TEXT));
+
+  // Every "Talk to Arjun" goes to the form at the top and puts the cursor in the name box.
+  const form = document.getElementById("lead-form");
+  document.querySelectorAll(".js-to-form").forEach(a => a.addEventListener("click", e => {
+    e.preventDefault();
+    document.getElementById("book").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    if (!form.hidden) setTimeout(() => form.name.focus({ preventScroll: true }), reduce ? 0 : 600);
+  }));
+
+  // Hero zoom-out once the image is in.
+  const heroImg = document.getElementById("hero-img");
+  const ready = () => requestAnimationFrame(() => document.body.classList.add("loaded"));
+  heroImg.complete ? ready() : heroImg.addEventListener("load", ready, { once: true });
+
+  // Reveal on scroll.
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -4% 0px", threshold: 0.04 });
+  document.querySelectorAll(".reveal, .reveal-img").forEach(el => io.observe(el));
+
+  // Header line and a gentle parallax on the hero photo.
+  const header = document.getElementById("header");
+  const heroBg = document.querySelector(".hero-bg");
+  let ticking = false;
+  addEventListener("scroll", () => {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const y = scrollY;
+      header.classList.toggle("scrolled", y > 8);
+      if (!reduce && y < heroBg.offsetHeight) heroImg.parentElement.style.transform = "translateY(" + (y * 0.12) + "px)";
+      ticking = false;
+    });
+  }, { passive: true });
+
+  // Sticky bar on phones: shows once the form is out of view, hides at the closing panel.
+  const sticky = document.getElementById("sticky");
+  let formGone = false, ctaOn = false;
+  const setSticky = () => sticky.classList.toggle("on", formGone && !ctaOn);
+  new IntersectionObserver(([e]) => { formGone = !e.isIntersecting; setSticky(); }).observe(document.getElementById("book"));
+  new IntersectionObserver(([e]) => { ctaOn = e.isIntersecting; setSticky(); }, { threshold: 0.3 }).observe(document.getElementById("cta"));
+
+  // Slider arrows and progress.
+  const track = document.getElementById("track"), bar = document.getElementById("bar");
+  const prev = document.getElementById("prev"), next = document.getElementById("next");
+  const step = () => track.querySelector(".slide").offsetWidth + 16;
+  const sync = () => {
+    const max = track.scrollWidth - track.clientWidth;
+    const p = max > 0 ? track.scrollLeft / max : 1;
+    bar.style.transform = "translateX(" + (p * (100 / 0.3 - 100)) + "%)";
+    prev.disabled = track.scrollLeft < 4; next.disabled = track.scrollLeft > max - 4;
+  };
+  prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+  next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+  track.addEventListener("scroll", sync, { passive: true }); addEventListener("resize", sync); sync();
+
+  // Floor plans.
+  const dlg = document.getElementById("plan-dialog"), dlgImg = document.getElementById("plan-img");
+  document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => {
+    dlgImg.src = b.dataset.plan; dlgImg.alt = b.dataset.alt; dlg.showModal();
+  }));
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+  // Ad tracking from the landing URL, sent with the lead.
+  const params = new URLSearchParams(location.search);
+  const tracking = {};
+  ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"].forEach(k => { if (params.get(k)) tracking[k] = params.get(k); });
+
+  // Lead submit: posts to the HOI lead desk's website door (webhookSite), which
+  // stores every post before reading it. A plain form post needs no preflight, so
+  // it reaches the desk from any domain; the reply can't be read cross-site, so a
+  // network failure is the only failure we can see.
+  const LEAD_DESK = "https://hoi-lead-flow.base44.app/functions/webhookSite";
+  const LABELS = {
+    own_home: "Own home", weekend_home: "Weekend home", for_parents: "For parents",
+    google_meet: "Google Meet", in_person: "Face to face",
+    morning: "Morning (9 to 12)", afternoon: "Afternoon (12 to 4)", evening: "Evening (4 to 8)", weekend: "Weekend",
+  };
+  async function submitLead(lead) {
+    const body = new URLSearchParams({
+      name: lead.name.trim(),
+      phone: lead.phone,
+      city: lead.city.trim(),
+      project_code: "ELT",
+      form: "elite18-landing",
+      page: location.href,
+      landing_page: location.origin + location.pathname,
+      message: "Elite 18 website · Looking for: " + LABELS[lead.looking_for] +
+        " · Meet Arjun on: " + LABELS[lead.meeting_mode] +
+        " · Best time to call: " + LABELS[lead.best_time] +
+        " · Phone country: " + lead.country,
+      ...tracking,
+    });
+    await fetch(LEAD_DESK, {
+      method: "POST",
+      mode: "no-cors",
+      keepalive: true,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    });
+  }
+
+  // Country codes. India first, then the countries most of our NRI buyers live in.
+  // len = digits in the number after the country code, without the leading 0.
+  const COUNTRIES = [
+    ["IN", "India", "91", [10], "98765 43210"],
+    ["AE", "UAE", "971", [9], "50 123 4567"],
+    ["US", "USA", "1", [10], "201 555 0123"],
+    ["GB", "UK", "44", [10], "7400 123456"],
+    ["SA", "Saudi Arabia", "966", [9], "51 234 5678"],
+    ["QA", "Qatar", "974", [8], "3312 3456"],
+    ["KW", "Kuwait", "965", [8], "5001 2345"],
+    ["OM", "Oman", "968", [8], "9212 3456"],
+    ["BH", "Bahrain", "973", [8], "3600 1234"],
+    ["CA", "Canada", "1", [10], "506 234 5678"],
+    ["AU", "Australia", "61", [9], "412 345 678"],
+    ["NZ", "New Zealand", "64", [8, 9, 10], "21 123 4567"],
+    ["SG", "Singapore", "65", [8], "8123 4567"],
+    ["MY", "Malaysia", "60", [9, 10], "12 345 6789"],
+    ["HK", "Hong Kong", "852", [8], "5123 4567"],
+    ["DE", "Germany", "49", [10, 11], "1512 3456789"],
+    ["IE", "Ireland", "353", [9], "85 012 3456"],
+    ["NL", "Netherlands", "31", [9], "6 12345678"],
+    ["FR", "France", "33", [9], "6 12 34 56 78"],
+    ["CH", "Switzerland", "41", [9], "78 123 45 67"],
+    ["IT", "Italy", "39", [9, 10], "312 345 6789"],
+    ["SE", "Sweden", "46", [9], "70 123 4567"],
+    ["JP", "Japan", "81", [10], "90 1234 5678"],
+    ["ZA", "South Africa", "27", [9], "71 123 4567"],
+    ["KE", "Kenya", "254", [9], "712 123456"],
+    ["NG", "Nigeria", "234", [10], "802 123 4567"],
+  ];
+  const flag = iso => iso.replace(/./g, c => String.fromCodePoint(127397 + c.charCodeAt(0)));
+  const countrySel = document.getElementById("country"), phoneIn = document.getElementById("phone");
+  countrySel.innerHTML = COUNTRIES.map(([iso, name, code], i) =>
+    `<option value="${i}" aria-label="${name} +${code}">${flag(iso)} +${code}</option>`).join("");
+  const country = () => COUNTRIES[+countrySel.value];
+  const setCountry = () => { const c = country(); phoneIn.placeholder = c[4]; phoneIn.maxLength = Math.max(...c[3]) + 6; };
+  countrySel.addEventListener("change", () => { setCountry(); phoneIn.focus(); });
+  setCountry();
+
+  // A number typed or pasted with + or 00 picks its own country (longest code wins).
+  phoneIn.addEventListener("input", () => {
+    const m = phoneIn.value.trim().match(/^(?:\+|00)\s*([\d\s-]+)/);
+    if (!m) return;
+    const digits = m[1].replace(/\D/g, "");
+    const hit = COUNTRIES.map((c, i) => [c[2], i]).filter(([code]) => digits.startsWith(code)).sort((a, b) => b[0].length - a[0].length)[0];
+    if (!hit || digits.length <= hit[0].length) return;
+    countrySel.value = String(hit[1]); setCountry();
+    phoneIn.value = digits.slice(hit[0].length);
+  });
+
+  // Returns the full number as +<code><digits>, or an error message.
+  function checkPhone(raw) {
+    const [, name, code, lens] = country();
+    let n = String(raw || "").replace(/\D/g, "");
+    if (n.startsWith("00" + code)) n = n.slice(2 + code.length);
+    else if (n.startsWith(code) && lens.includes(n.length - code.length)) n = n.slice(code.length);
+    if (n.startsWith("0") && code !== "39") n = n.slice(1); // trunk 0 (Italy keeps it)
+    const want = lens.length === 1 ? lens[0] + " digit" : lens[0] + " to " + lens[lens.length - 1] + " digit";
+    if (!lens.includes(n.length)) return { error: code === "91" ? "Please enter a 10 digit mobile number." : "Please enter a " + want + " " + name + " number." };
+    if (code === "91" && !/^[6-9]/.test(n)) return { error: "Indian mobile numbers start with 6, 7, 8 or 9." };
+    return { e164: "+" + code + n };
+  }
+
+  const err = document.getElementById("form-error");
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(form));
+    if (!d.name?.trim()) return err.textContent = "Please add your name.";
+    const ph = checkPhone(d.phone);
+    if (ph.error) { phoneIn.focus(); return err.textContent = ph.error; }
+    if (!d.city?.trim()) return err.textContent = "Please add your city.";
+    if (!d.best_time) return err.textContent = "Please pick a time to call.";
+    if (!d.looking_for) return err.textContent = "Please pick what you're looking for.";
+    if (!d.meeting_mode) return err.textContent = "Please pick Google Meet or face to face.";
+    err.textContent = "";
+    const btn = form.querySelector("button[type=submit]");
+    btn.disabled = true; btn.textContent = "Sending...";
+    try {
+      delete d.country;
+      await submitLead({ ...d, phone: ph.e164, country: country()[1], project: "ELT", source: "website", page: location.href, ...tracking });
+      form.hidden = true;
+      const t = document.getElementById("thanks"); t.classList.add("show"); t.focus();
+    } catch {
+      err.textContent = "Something went wrong. Please call or WhatsApp us.";
+      btn.disabled = false; btn.textContent = "Call me back";
+    }
+  });
+</script>
+</body>
+</html>

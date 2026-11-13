@@ -648,7 +648,12 @@ src="https://www.facebook.com/tr?id=1734207751006187&ev=PageView&noscript=1"
     google_meet: "Google Meet", in_person: "Face to face",
     morning: "Morning (9 to 12)", afternoon: "Afternoon (12 to 4)", evening: "Evening (4 to 8)", weekend: "Weekend",
   };
+  // Backup log: every form fill also goes to the "Elite Website Enquiries" Google Sheet,
+  // separate from the desk, so we can check that every lead reached the desk.
+  // The same ref goes to both, so a sheet row matches its exact lead in the desk.
+  const LEAD_SHEET = "https://script.google.com/macros/s/AKfycbzRcLr2ZtIYQHsU8FTf55UJzvudgMRoLxbr2twCYWPuyV5voGs_l6cL5djjKvU7A8p3Ag/exec";
   async function submitLead(lead) {
+    const ref = Math.random().toString(36).slice(2, 8).toUpperCase();
     const body = new URLSearchParams({
       name: lead.name.trim(),
       phone: lead.phone,
@@ -657,12 +662,16 @@ src="https://www.facebook.com/tr?id=1734207751006187&ev=PageView&noscript=1"
       form: "elite18-landing",
       page: location.href,
       landing_page: location.origin + location.pathname,
+      ref,
       message: "Elite 18 website · Looking for: " + LABELS[lead.looking_for] +
         " · Meet Arjun on: " + LABELS[lead.meeting_mode] +
         " · Best time to call: " + LABELS[lead.best_time] +
-        " · Phone country: " + lead.country,
+        " · Phone country: " + lead.country +
+        " · Ref: " + ref,
       ...tracking,
     });
+    // Fired first and not awaited, so a desk failure never stops the sheet getting the lead.
+    fetch(LEAD_SHEET, { method: "POST", mode: "no-cors", keepalive: true, body }).catch(() => {});
     await fetch(LEAD_DESK, {
       method: "POST",
       mode: "no-cors",
